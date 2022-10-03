@@ -1,0 +1,18 @@
+<div class="row row-cols-3">
+  <% @pets.each do |pet| %>
+    <div class="col">
+      <div class="card">
+        <% if pet.photo.attached? %>
+          <%= cl_image_tag pet.photo.key, class: 'card-img-top' %>
+        <% else %>
+          <i class="fa-solid fa-paw card-img-top"></i>
+        <% end %>
+        <div class="card-body">
+          <%= link_to "#{pet.name} 👈", pet_path(pet), class: 'card-title' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'New pet', new_pet_path, class: 'btn btn-info' %>
