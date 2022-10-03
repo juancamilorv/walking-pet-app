@@ -1,7 +1,7 @@
 <div class="row row-cols-3">
   <% @pets.each do |pet| %>
     <div class="col">
-      <div class="card">
+      <div class="card" style="width: 18rem;">
         <% if pet.photo.attached? %>
           <%= cl_image_tag pet.photo.key, class: 'card-img-top' %>
         <% else %>
