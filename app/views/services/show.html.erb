@@ -1,0 +1,21 @@
+<h1>This is the show view of service</h1>
+
+<div class="row">
+  <div class="card" style="width: 18rem;">
+    <% if @service.pet.photo.attached? %>
+      <%= cl_image_tag @service.pet.photo.key, class: "card-img-top" %>
+    <% else %>
+      <i class="fa-solid fa-paw card-img-top"></i>
+    <% end %>
+
+    <div class="card-body">
+      <h4 class="card-title"><%= @service.schedule %></h4>
+      <h6 class="card-subtitle">Petowner:</h6>
+      <p class="card-text"><%= @service.pet.user.email %></p>
+      <h6 class="card-subtitle">Petwalker:</h6>
+      <p class="card-text"><%= @service.user.email %></p>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Back', services_path, class: 'btn btn-info' %>

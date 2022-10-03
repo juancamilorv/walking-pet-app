@@ -1,0 +1,12 @@
+<%= simple_form_for @pet do |f| %>
+  <div class="form-inputs">
+    <%= f.input :photo, as: :file %>
+    <%= f.input :name, label: 'Name:' %>
+    <%= f.input :breed, label: 'Dreed:' %>
+    <%= f.input :important_note, label: 'Important note:' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
