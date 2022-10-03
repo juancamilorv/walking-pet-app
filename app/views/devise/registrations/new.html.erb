@@ -15,6 +15,9 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :petwalker,
+                as: :radio_buttons, collection: [['Pet walker',true], ['Pet owner',false]],
+                required: true %>
   </div>
 
   <div class="form-actions">
