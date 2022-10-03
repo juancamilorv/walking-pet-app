@@ -1,5 +1,5 @@
-<h1>This is the show view of pet</h1>
-
+<h1> Your pets 🐾</h1>
+<br>
 <div class="row">
   <div class="card" style="width: 18rem;">
     <% if @pet.photo.attached? %>
@@ -11,12 +11,14 @@
     <div class="card-body">
       <h4 class="card-title"><%= @pet.name %></h4>
       <h6 class="card-subtitle"><%= @pet.breed %></h6>
+      <br>
       <p class="card-text"><%= @pet.important_note %></p>
-      <%= button_to 'Delete pet', pet_path(@pet), method: :delete, class: "btn btn-warning" %>
-      <%= link_to 'Edit pet', edit_pet_path(@pet), class: 'btn btn-info' %>
-      <%= link_to 'New service', new_pet_service_path(@pet), class: 'btn btn-danger' %>
+      <br>
+      <%= button_to 'Delete pet', pet_path(@pet), method: :delete, class: "btn btn-sm btn-warning" %>
+      <%= link_to 'Edit pet', edit_pet_path(@pet), class: 'btn btn-sm btn-info' %>
+      <%= link_to 'New service', new_pet_service_path(@pet), class: 'btn btn-sm btn-danger' %>
     </div>
   </div>
 </div>
-
+<br>
 <%= link_to 'Back', pets_path, class: 'btn btn-info' %>
