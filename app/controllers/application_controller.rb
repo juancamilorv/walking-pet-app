@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys:
-                                      %i[photo name adress region city description price_per_hour phone_number])
+                                      %i[photo name address region city description price_per_hour phone_number])
   end
 end
