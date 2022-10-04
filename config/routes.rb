@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
 
   resources :services, except: %i[new create destroy]
-  resources :users, only: %i[index show]
+  resources :users, only: [:show]
 end

@@ -1,12 +1,37 @@
-<%= simple_form_for @pet do |f| %>
-  <div class="form-inputs">
-    <%= f.input :photo, as: :file %>
-    <%= f.input :name, label: 'Name:' %>
-    <%= f.input :breed, label: 'Dreed:' %>
-    <%= f.input :important_note, label: 'Important note:' %>
-  </div>
+<section class="get_in_touch">
+  <h1 class="title">Ingresa una nueva mascota</h1>
+  <div class="container">
 
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <%= simple_form_for @pet do |f| %>
+      <div class="form-inputs contact-form row">
+
+      <div class="form-field col-lg-12">
+        <%= f.label :photo %>
+        <%= f.input :photo, as: :file, label: false, class: 'input-text' %>
+      </div>
+
+
+      <div class="form-field col-lg-6">
+        <%= f.text_field :name, label: false, class: 'input-text' %>
+        <%= f.label :name, class: 'label' %>
+      </div>
+
+      <div class="form-field col-lg-6">
+        <%= f.input :breed, label: false, class: 'input-text' %>
+        <%= f.label :breed, class: 'label' %>
+      </div>
+
+      <div class="form-field col-lg-12">
+        <%= f.input :important_note, label: false, class: 'input-text' %>
+        <%= f.label :important_note, class: 'label' %>
+      </div>
+
+
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, class: "btn btn-primary submit-btn" %>
+      </div>
+    <% end %>
+   </div>
+</section>
