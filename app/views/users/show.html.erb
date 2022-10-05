@@ -1,14 +1,10 @@
 
 <% if user_signed_in? %>
-
-  <%= @user.name %><br/>
-  <%= @user.email %><br/>
-  <%= @user.address %><br/>
-
-  <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
-
+  <%= link_to 'New service', services_path %>
 <% else %>
-
-  <%= link_to 'RESERVAR', new_user_session_path, class: 'btn btn-primary' %>
-
+  <%= link_to 'New service', new_user_session_path %>
 <% end %>
+
+<%= @user.name %><br/>
+<%= @user.email %><br/>
+<%= @user.address %><br/>
