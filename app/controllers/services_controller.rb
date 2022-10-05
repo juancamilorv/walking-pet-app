@@ -1,10 +1,9 @@
 class ServicesController < ApplicationController
   before_action :set_pet, only: %i[new create]
-  before_action :set_service, only: %i[show]
+  before_action :set_service, only: %i[show update]
 
   def index
-    @services = Service.all
-    # set private method to filter @services for petowners & petwalkers view
+    set_services
   end
 
   def show
@@ -17,9 +16,10 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     @service.pet = @pet
+    @service.state = 'scheduled'
 
     if @service.save
-      redirect_to @service, notice: 'Pet was successfully created!'
+      redirect_to services_path, notice: 'Service was successfully created!'
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,9 @@ class ServicesController < ApplicationController
   end
 
   def update
-    if @service.update(service_params)
+    @service.state = 'accepted' if @service.state == 'scheduled'
+
+    if @service.update(params.permit(:data))
       redirect_to @service, notice: 'Service was successfully updated!'
     else
       render :new, status: :unprocessable_entity
@@ -50,6 +52,14 @@ class ServicesController < ApplicationController
 
   def set_service
     @service = Service.find(params[:id])
+  end
+
+  def set_services
+    if current_user.petwalker
+      @services = Service.where(user: current_user)
+    else
+      @services = Service.where(pet: Pet.where(user: current_user))
+    end
   end
 
   def service_params
