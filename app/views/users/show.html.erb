@@ -1,3 +1,14 @@
-<%= @user.name %><br/>
-<%= @user.email %><br/>
-<%= @user.address %><br/>
+
+<% if user_signed_in? %>
+
+  <%= @user.name %><br/>
+  <%= @user.email %><br/>
+  <%= @user.address %><br/>
+
+  <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
+
+<% else %>
+
+  <%= link_to 'RESERVAR', new_user_session_path, class: 'btn btn-primary' %>
+
+<% end %>
