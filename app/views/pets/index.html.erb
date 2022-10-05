@@ -1,18 +1,25 @@
-<div class="row row-cols-3">
+
+<div class="row row-cols-3 mx-auto py-2">
   <% @pets.each do |pet| %>
     <div class="col">
-      <div class="card" style="width: 18rem;">
+      <div class="card text-center p-3 pb-md-4 mx-auto" style="width: 18rem;">
         <% if pet.photo.attached? %>
           <%= cl_image_tag pet.photo.key, class: 'card-img-top' %>
         <% else %>
-          <i class="fa-solid fa-paw card-img-top"></i>
+          <!--<i class="fa-solid fa-paw card-img-top"></i>-->
+          <p>
+          <%= image_tag "puppy.png", size: "auto", style: "border-radius: 20%", class: "card-img-top"%>
+          </p>
         <% end %>
         <div class="card-body">
           <%= link_to "#{pet.name} 👈", pet_path(pet), class: 'card-title' %>
+          <h3><%= pet.breed %></h3>
+          <h4><%= pet.important_note %></h4>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-
-<%= link_to 'New pet', new_pet_path, class: 'btn btn-info' %>
+<div class = "d-grid gap-2 col-6 mx-auto">
+<%= link_to 'New pet', new_pet_path, class: 'btn btn-primary' %>
+</div>
