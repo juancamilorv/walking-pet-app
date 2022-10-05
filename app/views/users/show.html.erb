@@ -1,3 +1,10 @@
+
+<% if user_signed_in? %>
+  <%= link_to 'New service', services_path %>
+<% else %>
+  <%= link_to 'New service', new_user_session_path %>
+<% end %>
+
 <%= @user.name %><br/>
 <%= @user.email %><br/>
 <%= @user.address %><br/>
