@@ -1,10 +1,20 @@
+<%= @petwalker.name %><br/>
+<%= @petwalker.email %><br/>
+<%= @petwalker.address %><br/>
 
-<% if user_signed_in? %>
-  <%= link_to 'New service', services_path %>
-<% else %>
-  <%= link_to 'New service', new_user_session_path %>
+<%= simple_form_for [@pet, @service] do |f| %>
+  <div class="form-inputs">
+    <%= f.association :user, collection: [User.find(@petwalker.id)], selected: 1, label: "Petwalker", label_method: :email %>
+    <%= f.input :schedule, label: 'Schedule:', required: true %>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="form-actions">
+      <%= f.button :submit, 'Schedule', class: "btn btn-sm btn-danger" %>
+    </div>
+  <% else %>
+    <div class="form-actions">
+      <%= link_to 'Schedule', new_user_session_path, class: 'btn btn-sm btn-danger' %>
+    </div>
+  <% end %>
 <% end %>
-
-<%= @user.name %><br/>
-<%= @user.email %><br/>
-<%= @user.address %><br/>
