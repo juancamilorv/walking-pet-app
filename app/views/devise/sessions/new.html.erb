@@ -1,20 +1,39 @@
-<h2>Log in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 d-none d-md-block infinity-image-container"></div>
+    <div class="col-lg-6 col-md-6 infinity-form-container">
+      <div class="col-lg-9 col-md-12 col-sm-8 col-xs-12 infinity-form">
+        <div class="text-center mb-3 mt-5">
+          <h4>Ingresa a tu Cuenta</h4>
+        </div>
+
+        <%# form design %>
+
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+          <div class="form-inputs">
+            <span>
+              <i class="fa fa-envelope"></i>
+            </span>
+            <%= f.text_field :email, required: false, autofocus: true, input_html: { autocomplete: "email" }, placeholder: 'Email' %>
+          </div>
+          <div class="form-inputs">
+            <span>
+              <i class="fa fa-lock"></i>
+            </span>
+            <%= f.password_field :password, required: false, input_html: { autocomplete: "current-password" }, placeholder: 'Password' %>
+          </div>
+
+          <div class="form-actions mb-3">
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            <%= f.button :submit, "Log in", class: 'btn btn-primary' %>
+          </div>
+          <div class="text-center mb-5 text-decoration-none">
+            No tienes unas cuenta?
+            <%= render "devise/shared/links" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

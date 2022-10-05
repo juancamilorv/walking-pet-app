@@ -3,4 +3,5 @@
 
 <% @users.each do |user| %>
   <%= link_to user.email, user_path(user) %>
+  <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
 <% end %>
