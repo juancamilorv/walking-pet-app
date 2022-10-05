@@ -12,10 +12,10 @@
   <div class="card-container">
     <div class="cards-walkers">
 
-      <% @users.each do |user| %>
+      <% @petwalkers.each do |petwalker| %>
       <div class="card-walker">
-        <% if user.photo.attached? %>
-          <%= cl_image_tag user.photo.key, class: 'card-img-top' %>
+        <% if petwalker.photo.attached? %>
+          <%= cl_image_tag petwalker.photo.key, class: 'card-img-top' %>
         <% else %>
           <!--<i class="fa-solid fa-paw card-img-top"></i>-->
           <p>
@@ -24,9 +24,8 @@
         <% end %>
         <div class="card-user">
           <h5 class="card-title"></h5>
-            <%= link_to user.email, user_path(user) %>
+            <%= link_to petwalker.email, user_path(petwalker) %>
             <p class="card-description">Description</p>
-            <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
         </div>
       </div>
       <% end %>

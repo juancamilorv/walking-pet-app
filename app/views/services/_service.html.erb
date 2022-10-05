@@ -1,0 +1,43 @@
+<% if current_user.petwalker %>
+
+  <% if service.state == 'scheduled' %>
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <% if service.pet.photo.attached? %>
+          <%= cl_image_tag service.pet.photo.key, class: 'card-img-top' %>
+        <% else %>
+          <i class="fa-solid fa-paw card-img-top"></i>
+        <% end %>
+        <div class="card-body">
+          <%= link_to service.created_at, service_path(service), class: 'card-title' %>
+          <br><br>
+          <%= button_to 'Accept', service_path(service), method: :patch, class: "btn btn-info"  %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+
+<% else %>
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <% if service.pet.photo.attached? %>
+          <%= cl_image_tag service.pet.photo.key, class: 'card-img-top' %>
+        <% else %>
+          <i class="fa-solid fa-paw card-img-top"></i>
+        <% end %>
+        <div class="card-body">
+          <%= link_to service.created_at, service_path(service), class: 'card-title' %>
+          <br><br>
+          <p class="card-text"><%= service.state %></p>
+
+        </div>
+      </div>
+    </div>
+
+
+
+<% end %>

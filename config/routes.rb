@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: "pages#home"
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
   resources :pets do
     resources :services, only: %i[new create]
