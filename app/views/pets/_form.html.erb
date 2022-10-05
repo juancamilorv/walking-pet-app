@@ -6,31 +6,35 @@
       <div class="form-inputs contact-form row">
 
       <div class="form-field col-lg-12">
-        <%= f.label :photo %>
+        <%= f.label :foto, class: 'photo' %>
         <%= f.input :photo, as: :file, label: false, class: 'input-text' %>
       </div>
 
 
       <div class="form-field col-lg-6">
-        <%= f.text_field :name, label: false, class: 'input-text' %>
+        <%= f.text_field :name, label: false, class: 'input-text', placeholder: ' ' %>
         <%= f.label :name, class: 'label' %>
       </div>
 
       <div class="form-field col-lg-6">
-        <%= f.input :breed, label: false, class: 'input-text' %>
+        <%= f.text_field :breed, label: false, class: 'input-text', placeholder: ' ' %>
         <%= f.label :breed, class: 'label' %>
       </div>
 
       <div class="form-field col-lg-12">
-        <%= f.input :important_note, label: false, class: 'input-text' %>
+        <%= f.text_field :important_note, label: false, class: 'input-text', placeholder: ' ' %>
         <%= f.label :important_note, class: 'label' %>
       </div>
 
 
       </div>
 
-      <div class="form-actions">
+      <div class="form-actions d-flex justify-content-between">
         <%= f.button :submit, class: "btn btn-primary submit-btn" %>
+        <div class="d-flex">
+          <p>Ya tienes una mascota?</p>
+          <%= link_to "Lista de mascotas", pets_path, class: "btn btn-primary mx-1" %>
+        </div>
       </div>
     <% end %>
    </div>

@@ -1,7 +1,6 @@
 .get_in_touch {
   max-width: 700px;
-  margin: 50px 0;
-  position: relative;
+  margin: 50px auto;
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
   padding: 30px;
 }
@@ -14,6 +13,17 @@
   line-height: 49px;
   padding-bottom: 20px;
   color: "5543ca";
+  background: linear-gradient(to right, #f4524d 0%, #5543ca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title {  // this is title of the edit_user form
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 2em;
+  line-height: 49px;
+  padding-bottom: 20px;
   background: linear-gradient(to right, #f4524d 0%, #5543ca 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -32,10 +42,13 @@
   border-color: #5543ca;
   line-height: 26px;
   font-weight: 400;
+  background-color: #f4f4f4;
 }
 
+
 .contact-form .input-text:focus + .label,
-.contact-form .input-text.not-empty + .label {
+.contact-form .input-text.not-empty + .label,
+.contact-form .input-text:not(:placeholder-shown) + .label {
   transform: translateY(-24px);
 }
 
@@ -46,7 +59,7 @@
 .contact-form .label {
   position: absolute;
   left: 20px;
-  bottom: 11px;
+  bottom: 6px;
   font-size: 19px;
   line-height: 26px;
   font-weight: 400;
@@ -54,6 +67,144 @@
   cursor: text;
   text-transform: capitalize;
   transition: transform .2s ease-in-out;
+}
+
+.contact-form .label-edit {
+  position: absolute;
+  left: 20px;
+  bottom: 6px;
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  cursor: text;
+  text-transform: capitalize;
+  transition: transform .2s ease-in-out;
+}
+
+.contact-form .input-text:focus + .label-edit,
+.contact-form .input-text.not-empty + .label-edit,
+.contact-form .input-text:not(:placeholder-shown) + .label-edit {
+  transform: translateY(-24px);
+}
+
+.contact-form .label-edit-name {
+  position: absolute;
+  left: 14px;
+  bottom: 26px;
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  cursor: text;
+  text-transform: capitalize;
+  transition: transform .2s ease-in-out;
+}
+
+.contact-form .input-text:focus + .label-name,
+.contact-form .input-text.not-empty + .label-name,
+.contact-form .input-text:not(:placeholder-shown) + .label-edit-name {
+  transform: translateY(-24px);
+}
+
+.contact-form .label-edit-2{
+  position: absolute;
+  left: 14px;
+  bottom: 57px;
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  text-transform: capitalize;
+}
+
+// service form
+
+.contact-form .label-service{
+  position: absolute;
+  left: 5px;
+  bottom: 38px;
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  text-transform: capitalize;
+}
+
+.contact-form .label-edit-collection {
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  text-transform: capitalize;
+}
+
+.contact-form .label-edit-3 {
+  position: absolute;
+  left: 14px;
+  bottom: 22px;
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  cursor: text;
+  text-transform: capitalize;
+  transition: transform .2s ease-in-out;
+}
+
+.contact-form .input-text:focus + .label-edit-3,
+.contact-form .input-text.not-empty + .label-edit-3,
+.contact-form .input-text:not(:placeholder-shown) + .label-edit-3 {
+  transform: translateY(-24px);
+}
+
+.contact-form .label-edit-num {
+  position: absolute;
+  left: 20px;
+  bottom: 6px;
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  cursor: text;
+  text-transform: capitalize;
+  transition: transform .2s ease-in-out;
+}
+
+.contact-form .input-text:focus + .label-edit-num,
+.contact-form .input-text.not-empty + .label-edit-num,
+.contact-form .input-text:not(:placeholder-shown) + .label-edit-num {
+  transform: translateY(-24px);
+}
+
+.contact-form .label-edit-dic {
+  position: absolute;
+  left: 20px;
+  bottom: 4px;
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  cursor: text;
+  text-transform: capitalize;
+  transition: transform .2s ease-in-out;
+}
+
+.contact-form .input-text:focus + .label-edit-dic,
+.contact-form .input-text.not-empty + .label-edit-dic,
+.contact-form .input-text:not(:placeholder-shown) + .label-edit-dic {
+  transform: translateY(-24px);
+}
+
+.contact-form .photo{
+  position: absolute;
+  left: 20px;
+  bottom: 60px;
+  font-size: 19px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  cursor: text;
+  text-transform: capitalize;
 }
 
 .contact-form .submit-btn {
