@@ -1,34 +1,57 @@
-<div class="container">
-
-  <div class="card" style="width: 18rem;">
-    <div class="card-body color">
-      <h5 class="card-title">The Walking Pet</h5>
-      <a href="#" class="card-link">Sign up</a>
-      <a href="#" class="card-link">Log in</a>
+  <!-- Banner -->
+  <div class="banner color justify-content-star">
+    <div class="banner-inf">
+    <h5 class="title-home">The Walking Pet</h5>
+      <p></p>
     </div>
   </div>
 
-  <br>
+    <br>
 
-  <!--<div class="card-walkers" style="width: 18rem;">
-    <div class="card-wlakers body">
-      <% @users.each do |user| %>
-        <%= link_to user.email, user_path(user) %>
-        <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
-      <% end %>
+  <!--Dogs Walkers-->
+  <div class="card-container">
+    <div class="cards-walkers">
+
+      <div class="card-walker">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-user">
+          <h5 class="card-title">
+          <% @users.each do |user| %></h5>
+            <%= link_to user.email, user_path(user) %>
+            <p class="card-description">Description</p>
+            <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card-walker">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-user">
+          <h5 class="card-title">
+          <% @users.each do |user| %></h5>
+            <%= link_to user.email, user_path(user) %>
+            <p class="card-description">Description</p>
+            <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card-walker">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-user">
+          <h5 class="card-title">
+          <% @users.each do |user| %></h5>
+            <%= link_to user.email, user_path(user) %>
+            <p class="card-description">Description</p>
+            <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+
     </div>
-  </div>-->
-
-  <div class="card" style="width: 18rem;">
-  <img src="" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">
-    <% @users.each do |user| %></h5>
-      <%= link_to user.email, user_path(user) %>
-      <p class="card-text">Description</p>
-      <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
-    <% end %>
-  </div>
   </div>
 
-</div>
+  <!--Footer-->
+  <div class="footer">
+    <p>The walking pet team</p>
+  </div>
