@@ -1,31 +1,27 @@
+<!--Dogs Walkers-->
+<div class="card-container">
+  <div class="cards-walkers">
 
-
-  <!--Dogs Walkers-->
-  <div class="card-container">
-    <div class="cards-walkers">
-
-      <% @petwalkers.each do |petwalker| %>
-      <div class="card-walker">
-        <% if petwalker.photo.attached? %>
-          <%= cl_image_tag petwalker.photo.key, class: 'card-img-top' %>
-        <% else %>
-          <!--<i class="fa-solid fa-paw card-img-top"></i>-->
-          <p>
-          <%= image_tag "walkers.jpeg", size: "auto", style: "border-radius: 20%", class: "card-img-top"%>
-          </p>
-        <% end %>
-        <div class="card-user">
-          <h5 class="card-title"></h5>
-            <%= link_to petwalker.email, user_path(petwalker) %>
-            <p class="card-description">Description</p>
-        </div>
-      </div>
+    <% @petwalkers.each do |petwalker| %>
+    <div class="card-walker">
+      <% if petwalker.photo.attached? %>
+        <%= cl_image_tag petwalker.photo.key, class: 'card-img-top' %>
+      <% else %>
+        <%= image_tag "petwalker.png", class: "card-img-top"%>
       <% end %>
 
+      <div class="card-user">
+        <h5 class="card-title"></h5>
+          <%= link_to petwalker.email, user_path(petwalker) %>
+          <p class="card-description">Description</p>
+      </div>
     </div>
-  </div>
+    <% end %>
 
-  <!--Footer-->
-  <div class="footer">
-    <p>The walking pet team</p>
   </div>
+</div>
+
+<!--Footer-->
+<div class="footer">
+  <p>The walking pet team</p>
+</div>
