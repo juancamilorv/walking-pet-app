@@ -1,9 +1,7 @@
 <% if current_user.petwalker %>
 
-  <% if service.state == 'scheduled' %>
-
     <div class="col">
-      <div class="card" style="width: 18rem;">
+      <div class="card">
         <% if service.pet.photo.attached? %>
           <%= cl_image_tag service.pet.photo.key, class: 'card-img-top' %>
         <% else %>
@@ -12,13 +10,24 @@
         <div class="card-body">
           <%= link_to service.created_at, service_path(service), class: 'card-title' %>
           <br><br>
-          <%= button_to 'Accept', service_path(service), method: :patch, class: "btn btn-info"  %>
-        </div>
+          <p class="card-text"><%= service.state %></p>
+        <div>
       </div>
     </div>
 
-  <% end %>
+    </div>
+      <% if service.state == 'scheduled' %>
+        <%= button_to 'Accept', service_path(service), method: :patch, class: "btn btn-info"  %>
+      <% end %>
 
+      <% if service.state == 'accepted' %>
+        <%= button_to 'Start', service_path(service), method: :patch, class: "btn btn-info"  %>
+      <% end %>
+
+      <% if service.state == 'in process' %>
+        <%= button_to 'Finalize', service_path(service), method: :patch, class: "btn btn-info"  %>
+      <% end %>
+    </div>
 
 <% else %>
 
@@ -33,11 +42,18 @@
           <%= link_to service.created_at, service_path(service), class: 'card-title' %>
           <br><br>
           <p class="card-text"><%= service.state %></p>
-
         </div>
       </div>
     </div>
 
+    <div>
+      <% if service.state == 'started' %>
+        <%= button_to 'Start', service_path(service), method: :patch, class: "btn btn-info"  %>
+      <% end %>
 
+      <% if service.state == 'finished' %>
+        <%= button_to 'Finalize', service_path(service), method: :patch, class: "btn btn-info"  %>
+      <% end %>
+    </div>
 
 <% end %>
