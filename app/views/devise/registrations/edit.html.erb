@@ -1,49 +1,122 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class="mt-5 text-center title">Editar informacion de usuario</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<section class="get_in_touch">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+  <div class="form-inputs contact-form row">
+
+    <div class="form-field col-lg-12">
+      <%= f.label :email, class: 'label-edit-name'%>
+      <%= f.text_field :email, required: true, autofocus: true, class: 'input-text', label: false %>
+    </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :photo, as: :file %>
-    <%= f.input :name, required: true, autofocus: true %>
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+      <div class="form-field col-lg-6">
+        <%= f.input :photo, as: :file, class: 'input-text', label: false %>
+        <%= f.label :Foto, class: 'label-edit-2' %>
+      </div>
+
+      <div class="form-field col-lg-6">
+        <%= f.text_field :name, required: true, autofocus: true, class: 'input-text', label: false, placeholder: ' ' %>
+        <%= f.label :Nombre, class: 'label-edit-3' %>
+      </div>
+
+      <div class="form-field col-lg-6">
+        <%= f.text_field :password,
+                    class: 'input-text',
+                    label: false,
+                    placeholder: ' ',
+                    hint: "Puedes dejarlo en blanco si deseas",
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.label :contraseña, class: 'label-edit' %>
+      </div>
+
+      <div class="form-field col-lg-6">
+        <%= f.text_field :password_confirmation,
+                    class: 'input-text',
+                    label: false,
+                    placeholder: ' ',
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.label :confirmar_contraseña, class: 'label-edit' %>
+      </div>
+
+      <div class="form-field col-lg-12">
+        <%= f.text_field :current_password,
+                    class: 'input-text',
+                    label: false,
+                    placeholder: ' ',
+                    hint: "Necesitamos tu contraseña actual para verificar los cambios",
+                    required: true,
+                    input_html: { autocomplete: "current-password" } %>
+        <%= f.label :confirmar_contraseña_actual, class: 'label-edit' %>
+      </div>
+
+
 
     <% if current_user.petwalker %>
-      <%= f.input :description %>
-      <%= f.input :price_per_hour %>
+
+      <div class="form-field col-lg-12">
+        <%= f.text_field :description, class: 'input-text', label: false, placeholder: ' ' %>
+        <%= f.label :descripcion, class: 'label-edit' %>
+      </div>
+
+      <div class="form-field col-lg-12">
+        <%= f.text_field :price_per_hour, class: 'input-text', label: false, placeholder: ' ' %>
+        <%= f.label :precio_por_hora, class: 'label-edit' %>
+      </div>
+
     <% end %>
-    <%= f.input :phone_number %>
-    <%= f.input :region, collection: REGIONS %>
-    <%= f.input :city, collection: CITIES %>
-    <%= f.input :address %>
+
+    <div class="form-field col-lg-12">
+      <%= f.text_field :phone_number, class: 'input-text', label: false, placeholder: ' ' %>
+      <%= f.label :Numero_de_telefono, class: 'label-edit-num' %>
+    </div>
+
+    <div class="form-field col-lg-6">
+      <%= f.label :Region, class: 'label-edit-collection' %>
+      <%= f.input :region, collection: REGIONS, class: 'input-text', label: false  %>
+    </div>
+
+    <div class="form-field col-lg-6">
+      <%= f.label :Ciudad, class: 'label-edit-collection' %>
+      <%= f.input :city, collection: CITIES, class: 'input-text', label: false %>
+    </div>
+
+
+    <div class="form-field col-lg-12">
+      <%= f.text_field :address, class: 'input-text', label: false, placeholder: ' ' %>
+      <%= f.label :Direccion, class: 'label-edit-dic' %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Actualizar mi cuenta", class: "btn btn-primary" %>
+    <%= link_to "Volver", :back, class: "btn btn-primary" %>
   </div>
 <% end %>
+</section>
 
-<h3>Cancel my account</h3>
 
-<div class="d-flex align-items-center">
-  <div>Unhappy?</div>
-  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
+<hr class="bg.primary">
+
+<div class="d-flex justify-content-center">
+  <h3>Cancelar mi cuenta</h3>
 </div>
 
-<%= link_to "Back", :back %>
+
+<div class="d-flex justify-content-center">
+  Estas inconforme con tu cuenta?
+</div>
+
+<div class="d-flex justify-content-center">
+  <%= button_to "Cancelar mi cuenta", registration_path(resource_name),
+                                      data: { confirm: "Are you sure?" },
+                                      method: :delete,
+                                      class: "btn btn-link text-decoration-none" %>
+</div>
