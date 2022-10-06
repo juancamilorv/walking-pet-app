@@ -77,6 +77,7 @@ class ServicesController < ApplicationController
     when 'finished'
       @service.state = 'completed'
       @service.finished_at = Time.now
+      @service.price = ((@service.finished_at - @service.started_at) / 3600).round * @service.user.price_per_hour
     end
   end
 end
