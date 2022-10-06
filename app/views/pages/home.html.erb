@@ -1,40 +1,35 @@
-  <!-- Banner -->
-  <div class="banner color justify-content-star">
-    <div class="banner-inf">
-    <h5 class="title-home">The Walking Pet</h5>
-      <p></p>
+  <!--Dogs Walkers-->
+  <div class="card-container col-md">
+    <div class="cards-walkers album py-5 container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3 border-info">
+        <% @users.each do |user| %>
+          <div class="card-walker border-primary card mx-2 px-3 col">
+
+              <% if user.photo.attached? %>
+                <%= cl_image_tag user.photo.key, class: 'card-img-top'%>
+              <% else %>
+                <!--<i class="fa-solid fa-paw card-img-top"></i>-->
+
+              <%= image_tag "walkers.jpeg", size: "auto", style: "border-radius: 5%; width: 100%", class: "card-img-top bd-placeholder-img"%>
+
+              <% end %>
+
+              <div class="card-body">
+                <div class="card-user">
+                  <h5 class="card-title"></h5>
+                    <%= link_to user.email, user_path(user) %>
+                      <p class="card-description">Description</p>
+                    <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
+                </div>
+              </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-    <br>
-
-  <!--Dogs Walkers-->
-  <div class="card-container">
-    <div class="cards-walkers">
-
-      <% @users.each do |user| %>
-      <div class="card-walker">
-        <% if user.photo.attached? %>
-          <%= cl_image_tag user.photo.key, class: 'card-img-top' %>
-        <% else %>
-          <!--<i class="fa-solid fa-paw card-img-top"></i>-->
-          <p>
-          <%= image_tag "walkers.jpeg", size: "auto", style: "border-radius: 20%", class: "card-img-top"%>
-          </p>
-        <% end %>
-        <div class="card-user">
-          <h5 class="card-title"></h5>
-            <%= link_to user.email, user_path(user) %>
-            <p class="card-description">Description</p>
-            <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
-        </div>
-      </div>
-      <% end %>
-
-    </div>
   </div>
 
   <!--Footer-->
-  <div class="footer">
+  <div class="footer text-white bg-primary">
     <p>The walking pet team</p>
   </div>
