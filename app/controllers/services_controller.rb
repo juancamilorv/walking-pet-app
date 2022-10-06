@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_pet, only: %i[new create]
-  before_action :set_service, only: %i[show update]
+  before_action :set_service, only: %i[show edit update]
   before_action :set_next_state, only: :update
 
   def index
@@ -32,7 +32,7 @@ class ServicesController < ApplicationController
 
   def update
     if @service.update(params.permit(:data))
-      redirect_to @service, notice: 'Service was successfully updated!'
+      redirect_to services_path, notice: 'Service was successfully updated!'
     else
       render :new, status: :unprocessable_entity
     end
