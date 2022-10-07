@@ -1,28 +1,55 @@
-<h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :petwalker, label: "I am a:",
-                as: :radio_buttons, collection: [['Pet walker',true], ['Pet owner',false]],
-                required: true %>
+<section class="get_in_touch">
+  <h1 class="title">Registrate aquí</h1>
+  <div class="container">
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs contact-form row">
+
+        <div class="form-field col-lg-12">
+          <%= f.text_field :email,
+                           required: true,
+                           label: false,
+                           class: 'input-text',
+                           placeholder: ' ' %>
+          <%= f.label :correo_electronico,
+                      class: 'label' %>
+        </div>
+
+        <div class="form-field col-lg-12">
+          <%= f.password_field :password,
+                               required: true,
+                               label: false,
+                               class: 'input-text',
+                               placeholder: ' ',
+                               hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+          <%= f.label :contraseña,
+                      class: 'label' %>
+        </div>
+
+        <div class="form-field col-lg-12">
+          <%= f.password_field :password_confirmation,
+                               required: true, label: false,
+                               class: 'input-text', placeholder: ' ' %>
+          <%= f.label :confirmar_contraseña,
+                      class: 'label' %>
+        </div>
+
+        <%= f.input :petwalker, label: "I am a:", as: :radio_buttons, collection: [['Pet walker',true], ['Pet owner',false]], required: true%>
+
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
   </div>
+</section>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+
 
 <%= render "devise/shared/links" %>

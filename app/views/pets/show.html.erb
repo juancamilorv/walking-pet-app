@@ -1,5 +1,6 @@
 <br>
 
+<<<<<<< HEAD
 <h1> Your pets 🐾</h1>
 
 <div class="row row-cols-3 mx-auto py-2">
@@ -23,6 +24,16 @@
           <%= link_to 'New service', new_pet_service_path(@pet), class: 'btn btn-sm btn-danger' %>
         </div>
       </div>
+=======
+    <div class="card-body">
+      <h4 class="card-title"><%= @pet.name %></h4>
+      <h6 class="card-subtitle"><%= @pet.breed %></h6>
+      <br>
+      <p class="card-text"><%= @pet.important_note %></p>
+      <br>
+      <%= button_to 'Delete pet', pet_path(@pet), method: :delete, class: "btn btn-sm btn-warning" %>
+      <%= link_to 'Edit pet', edit_pet_path(@pet), class: 'btn btn-sm btn-info' %>
+>>>>>>> master
     </div>
   <% end %>
 </div>

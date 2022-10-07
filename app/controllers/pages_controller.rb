@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :user ]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @users = User.where(petwalker: true)
+    @petwalkers = User.where(petwalker: true)
   end
 end

@@ -1,10 +1,25 @@
-<%= simple_form_for [@pet, @service] do |f| %>
-  <div class="form-inputs">
-    <%= f.association :user, collection: User.where(petwalker: true), label: "Petwalker", label_method: :email %>
-    <%= f.input :schedule, label: 'Schedule:', required: true %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
+<section class="get_in_touch">
+  <div class="container">
+    <%= simple_form_for [@pet, @service] do |f| %>
+      <div class="form-inputs contact-form">
+
+        <div class="form-field col-lg-12">
+          <%= f.label :Paseador, class: 'label-service' %>
+          <%= f.association :user, collection: User.where(petwalker: true), label: false, class: 'input-text', label_method: :email %>
+        </div>
+
+        <div class="form-field col-lg-12">
+          <%= f.label :Fecha, class: 'label-service' %>
+          <%= f.input :schedule, label: false, class: 'input-text', required: true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <%= link_to "Back to services", services_path, class: "btn btn-primary" %>
+        </div>
+
+      </div>
+    <% end %>
   </div>
-<% end %>
+</section>
