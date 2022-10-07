@@ -11,9 +11,10 @@
       <% end %>
 
       <div class="card-user">
-        <h5 class="card-title"></h5>
-          <%= link_to petwalker.email, user_path(petwalker) %>
-          <p class="card-description">Description</p>
+        
+          <%= link_to petwalker.name, user_path(petwalker) %>.
+          <h5 class="card-title"><%= petwalker.region %></h5>
+          <p class="card-description"><%= petwalker.price_per_hour %></p>
       </div>
     </div>
     <% end %>
