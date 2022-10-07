@@ -1,41 +1,27 @@
   <!--Dogs Walkers-->
-  <div class="card-container col-md">
-    <div class="cards-walkers album py-5 container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3 border-info">
-        <% @users.each do |user| %>
-          <div class="card-walker border-primary card mx-2 px-3 col">
-
-              <% if user.photo.attached? %>
-                <%= cl_image_tag user.photo.key, class: 'card-img-top'%>
+  <div class="container">
+    <div class="row justify-content-center ">
+      <% @petwalkers.each do |petwalker| %>
+        <div class="col-lg-3 mb-3 mx-2 border">
+          <div class="box">
+              <% if petwalker.photo.attached? %>
+                <%= cl_image_tag petwalker.photo.key, class: 'card-img-top', width: 70 %>
               <% else %>
                 <!--<i class="fa-solid fa-paw card-img-top"></i>-->
-
-              <%= image_tag "walkers.jpeg", size: "auto", style: "border-radius: 5%; width: 100%", class: "card-img-top bd-placeholder-img"%>
-
+                  <%= image_tag "petwalker.png", style: "border-radius: 5%", class: "card-img-top"%>
               <% end %>
 
-              <div class="card-body">
-                <div class="card-user">
-                  <h5 class="card-title"></h5>
-                    <%= link_to user.email, user_path(user) %>
-                      <p class="card-description">Description</p>
-                    <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary' %>
-                </div>
-              </div>
+              <h5 class="card-title m-3"></h5>
+              <%= link_to petwalker.email, user_path(petwalker) %>
+              <p class="card-description">Description</p>
+              <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary mb-2' %>
           </div>
+        </div>
         <% end %>
-      </div>
     </div>
-  </div>
   </div>
 
   <!--Footer-->
   <div class="footer text-white bg-primary">
     <p>The walking pet team</p>
   </div>
-</div>
-
-<!--Footer-->
-<div class="footer">
-  <p>The walking pet team</p>
-</div>
