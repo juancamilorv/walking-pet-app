@@ -1,79 +1,128 @@
 <% if current_user.petwalker %>
 
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <% if service.pet.photo.attached? %>
-          <%= cl_image_tag service.pet.photo.key, class: 'card-img-top' %>
-        <% else %>
-          <i class="fa-solid fa-paw card-img-top"></i>
-        <% end %>
-        <div class="card-body">
-          <%= link_to service.created_at, service_path(service), class: 'card-title' %>
-          <br><br>
-          <p class="card-text"><%= service.state %></p>
-        <div>
+  <div class="container">
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card card-margin">
+              <div class="card-header no-border">
+                  <h5 class="card-title"><i class="fa-solid fa-paw card-img-top"></i></h5>
+              </div>
+              <div class="card-body pt-0">
+                  <div class="widget-49">
+                      <div class="widget-49-title-wrapper">
+                          <div class="widget-49-date-primary">
+                              <span class="widget-49-date-day">7</span>
+                              <span class="widget-49-date-month">apr</span>
+                          </div>
+                          <div class="widget-49-meeting-info">
+                              <span class="widget-49-pro-title">Servicio de Paseo</span>
+                              <span class="widget-49-meeting-time">Status: <%= service.state %> </span>
+                          </div>
+                      </div>
+                      <ol class="widget-49-meeting-points">
+                          <li class="widget-49-meeting-item"><span>Paseador: <%= service.user.name %></span></li>
+                          <li class="widget-49-meeting-item"><span>Dueño de la mascota: <%= service.pet.user.name %></span></li>
+                          <li class="widget-49-meeting-item"><span>Mascota: </span></li>
+                      </ol>
+                      <div class="widget-49-meeting-action">
+
+
+                        <% if service.state == 'scheduled' %>
+                          <%= button_to 'Accept', service_path(service), method: :patch, params: { state: 'accepted' }, class: "btn btn-info"  %>
+                        <% end %>
+
+                        <% if service.state == 'scheduled' %>
+                          <%= button_to 'Deny', service_path(service), method: :patch, params: { state: 'denied' }, class: "btn btn-info"  %>
+                        <% end %>
+
+                        <% if service.state == 'accepted' %>
+                          <%= button_to 'Start', service_path(service), method: :patch, params: { state: 'started' }, class: "btn btn-info"  %>
+                        <% end %>
+
+                        <% if service.state == 'in process' %>
+                          <%= button_to 'Finalize', service_path(service), method: :patch, params: { state: 'finished' }, class: "btn btn-info"  %>
+                        <% end %>
+
+                        <% if service.state == 'completed' %>
+                          <%= service.price %>
+                        <% end %>
+
+
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
+  </div>
+  </div>
 
-    </div>
-      <% if service.state == 'scheduled' %>
-        <%= button_to 'Accept', service_path(service), method: :patch, params: { state: 'accepted' }, class: "btn btn-info"  %>
-      <% end %>
 
-      <% if service.state == 'scheduled' %>
-        <%= button_to 'Deny', service_path(service), method: :patch, params: { state: 'denied' }, class: "btn btn-info"  %>
-      <% end %>
-
-      <% if service.state == 'accepted' %>
-        <%= button_to 'Start', service_path(service), method: :patch, params: { state: 'started' }, class: "btn btn-info"  %>
-      <% end %>
-
-      <% if service.state == 'in process' %>
-        <%= button_to 'Finalize', service_path(service), method: :patch, params: { state: 'finished' }, class: "btn btn-info"  %>
-      <% end %>
-
-      <% if service.state == 'completed' %>
-        <%= service.price %>
-      <% end %>
-    </div>
 
 <% else %>
 
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <% if service.pet.photo.attached? %>
-          <%= cl_image_tag service.pet.photo.key, class: 'card-img-top' %>
-        <% else %>
-          <i class="fa-solid fa-paw card-img-top"></i>
-        <% end %>
-        <div class="card-body">
-          <%= link_to service.created_at, service_path(service), class: 'card-title' %>
-          <br><br>
-          <p class="card-text"><%= service.state %></p>
+
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-margin">
+                <div class="card-header no-border">
+                    <h5 class="card-title"><i class="fa-solid fa-paw card-img-top"></i></h5>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-date-primary">
+                                <span class="widget-49-date-day">7</span>
+                                <span class="widget-49-date-month">apr</span>
+                            </div>
+                            <div class="widget-49-meeting-info">
+                                <span class="widget-49-pro-title">Servicio de Paseo</span>
+                                <span class="widget-49-meeting-time">Status: <%= service.state %> </span>
+                            </div>
+                        </div>
+                        <ol class="widget-49-meeting-points">
+                            <li class="widget-49-meeting-item"><span>Paseador: <%= service.user.name %></span></li>
+                            <li class="widget-49-meeting-item"><span>Dueño de la mascota: <%= service.pet.user.name %></span></li>
+                            <li class="widget-49-meeting-item"><span>Mascota: </span></li>
+                        </ol>
+                        <div class="widget-49-meeting-action">
+                          <% if service.state == 'denied' %>
+                            <%= link_to 'Find another pet-walker', edit_service_path(service), class: "btn btn-info"  %>
+                          <% end %>
+
+                          <% if service.state == 'denied' %>
+                            <%= button_to 'Discard service', service_path(service), method: :delete, class: "btn btn-info"  %>
+                          <% end %>
+
+                          <% if service.state == 'started' %>
+                            <%= button_to 'Start', service_path(service), method: :patch, params: { state: 'in process' }, class: "btn btn-info"  %>
+                          <% end %>
+
+                          <% if service.state == 'finished' %>
+                            <%= button_to 'Finalize', service_path(service), method: :patch, params: { state: 'completed' }, class: "btn btn-info"  %>
+                          <% end %>
+
+                          <% if service.state == 'completed' %>
+                            <%= service.price %>
+
+                            <%= simple_form_for [@pet, service] do |f| %>
+                              <div class="form-inputs">
+                                <%= f.input :rating, label: 'Rating', required: true %>
+                                <%= f.input :review, label: 'Review:', required: true %>
+                                <%= f.hidden_field :state, value: "reviewed" %>
+                              </div>
+
+                              <div class="form-actions">
+                                <%= f.button :submit, 'Send', class: "btn btn-primary" %>
+                              </div>
+                            <% end %>
+                          <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-    <div>
-      <% if service.state == 'denied' %>
-        <%= link_to 'Find another pet-walker', edit_service_path(service), class: "btn btn-info"  %>
-      <% end %>
-
-      <% if service.state == 'denied' %>
-        <%= button_to 'Discard service', service_path(service), method: :delete, class: "btn btn-info"  %>
-      <% end %>
-
-      <% if service.state == 'started' %>
-        <%= button_to 'Start', service_path(service), method: :patch, params: { state: 'in process' }, class: "btn btn-info"  %>
-      <% end %>
-
-      <% if service.state == 'finished' %>
-        <%= button_to 'Finalize', service_path(service), method: :patch, params: { state: 'completed' }, class: "btn btn-info"  %>
-      <% end %>
-
-      <% if service.state == 'completed' %>
-        <%= service.price %>
-      <% end %>
     </div>
 
 <% end %>
