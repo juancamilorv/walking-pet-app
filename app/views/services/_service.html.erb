@@ -28,14 +28,14 @@
                       </ol>
                       <div class="widget-49-meeting-action">
 
-
+                        <div class="d-flex justify-content-between">
                         <% if service.state == 'scheduled' %>
-                          <%= button_to 'Accept', service_path(service), method: :patch, params: { state: 'accepted' }, class: "btn btn-info"  %>
-                        <% end %>
+                          <%= button_to 'Accept', service_path(service), method: :patch, params: { state: 'accepted' }, class: "btn btn-info mb-3"  %>
 
-                        <% if service.state == 'scheduled' %>
                           <%= button_to 'Deny', service_path(service), method: :patch, params: { state: 'denied' }, class: "btn btn-info"  %>
                         <% end %>
+                        </div>
+
 
                         <% if service.state == 'accepted' %>
                           <%= button_to 'Start', service_path(service), method: :patch, params: { state: 'started' }, class: "btn btn-info"  %>
@@ -112,13 +112,19 @@
                             <% end %>
                         </ol>
                         <div class="widget-49-meeting-action">
-                          <% if service.state == 'denied' %>
-                            <%= link_to 'Find another pet-walker', edit_service_path(service), class: "btn btn-info"  %>
-                          <% end %>
 
+                          <div class="d-flex justify-content-between">
                           <% if service.state == 'denied' %>
-                            <%= button_to 'Discard service', service_path(service), method: :delete, class: "btn btn-info"  %>
+                            <%= link_to 'Find pet-walker', edit_service_path(service), class: "btn btn-info"  %>
+                            <%= button_to 'Discard', service_path(service), method: :delete, class: "btn btn-info"  %>
                           <% end %>
+                          </div>
+
+
+
+
+
+
 
                           <% if service.state == 'started' %>
                             <%= button_to 'Start', service_path(service), method: :patch, params: { state: 'in process' }, class: "btn btn-info"  %>

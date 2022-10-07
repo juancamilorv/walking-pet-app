@@ -14,6 +14,11 @@ Service.destroy_all
 Pet.destroy_all
 User.destroy_all
 
+
+# Cloudinary::Uploader.upload("san_francisco.jpg")
+
+i = 0
+
 10.times do
   user = User.new
   if rand < 0.5
@@ -40,10 +45,14 @@ User.destroy_all
     pet.save!
   end
 
+  user.photo.attach(io: URI.open(IMAGES[i]), filename: "nes.png", content_type: "image/png")
+
+
   user.save!
   if user.petwalker
     puts "User #{user.name} created!"
   else
     puts "User #{user.name} created! Pet => #{pet.name}"
   end
+  i += 1
 end
