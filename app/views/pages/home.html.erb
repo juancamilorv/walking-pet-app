@@ -1,15 +1,16 @@
 <!--Dogs Walkers-->
-<div class="card-container">
-  <div class="cards-walkers">
+<div class="card-container col-md">
+  <div class="cards-walkers album py-5 container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3 border-info">
+      <% @petwalkers.each do |petwalker| %>
+        <div class="card-walker border-primary card mx-2 px-3 col">
+          <% if petwalker.photo.attached? %>
+            <%= cl_image_tag petwalker.photo.key, class: 'card-img-top'%>
+          <% else %>
+            <%= image_tag "petwalker.png", size: "auto", style: "border-radius: 5%; width: 100%", class: "card-img-top bd-placeholder-img"%>
+          <% end %>
 
-    <% @petwalkers.each do |petwalker| %>
-    <div class="card-walker">
-      <% if petwalker.photo.attached? %>
-        <%= cl_image_tag petwalker.photo.key, class: 'card-img-top' %>
-      <% else %>
-        <%= image_tag "petwalker.png", class: "card-img-top"%>
-      <% end %>
-
+          <div class="card-body">
       <div class="card-user">
         
           <%= link_to petwalker.name, user_path(petwalker) %>.
@@ -17,10 +18,11 @@
           <p class="card-description"><%= petwalker.price_per_hour %></p>
       </div>
     </div>
-    <% end %>
-
   </div>
-</div>
+      <% end %>
+
+
+
 
 <!--Footer-->
 <div class="footer">
