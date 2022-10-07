@@ -1,13 +1,30 @@
-<h1> Your pets 🐾</h1>
 <br>
-<div class="row">
-  <div class="card" style="width: 18rem;">
-    <% if @pet.photo.attached? %>
-      <%= cl_image_tag @pet.photo.key, class: "card-img-top" %>
-    <% else %>
-      <i class="fa-solid fa-paw card-img-top"></i>
-    <% end %>
 
+<<<<<<< HEAD
+<h1> Your pets 🐾</h1>
+
+<div class="row row-cols-3 mx-auto py-2">
+  <% @pets.each do |pet| %>
+    <div class="col ">
+      <div class="card text-left p-3 pb-md-4 mx-auto" style="width: 18rem;">
+        <% if pet.photo.attached? %>
+          <%= cl_image_tag pet.photo.key, class: "card-img-top" %>
+        <% else %>
+          <%= image_tag "puppy.png", size: "auto", style: "border-radius: 5%", class: "card-img-top"%>
+        <% end %>
+
+        <div class="card-body">
+          <h4 class="card-title"><%= @pet.name %></h4>
+          <h6 class="card-subtitle"><%= @pet.breed %></h6>
+          <br>
+          <p class="card-text"><%= @pet.important_note %></p>
+          <br>
+          <%= button_to 'Delete pet', pet_path(@pet), method: :delete, class: "btn btn-sm btn-warning" %>
+          <%= link_to 'Edit pet', edit_pet_path(@pet), class: 'btn btn-sm btn-info' %>
+          <%= link_to 'New service', new_pet_service_path(@pet), class: 'btn btn-sm btn-danger' %>
+        </div>
+      </div>
+=======
     <div class="card-body">
       <h4 class="card-title"><%= @pet.name %></h4>
       <h6 class="card-subtitle"><%= @pet.breed %></h6>
@@ -16,8 +33,11 @@
       <br>
       <%= button_to 'Delete pet', pet_path(@pet), method: :delete, class: "btn btn-sm btn-warning" %>
       <%= link_to 'Edit pet', edit_pet_path(@pet), class: 'btn btn-sm btn-info' %>
+>>>>>>> master
     </div>
-  </div>
+  <% end %>
 </div>
+
 <br>
+
 <%= link_to 'Back', pets_path, class: 'btn btn-info' %>
