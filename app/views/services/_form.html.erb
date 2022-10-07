@@ -6,7 +6,7 @@
 
         <div class="form-field col-lg-12">
           <%= f.label :Paseador, class: 'label-service' %>
-          <%= f.association :user, collection: User.where(petwalker: true), label: false, class: 'input-text', label_method: :email %>
+          <%= f.association :user, collection: @petwalkers, label: false, class: 'input-text', label_method: :email %>
         </div>
 
         <div class="form-field col-lg-12">
@@ -16,10 +16,11 @@
 
         <div class="form-actions">
           <%= f.button :submit, class: "btn btn-primary" %>
-          <%= link_to "Back to services", services_path, class: "btn btn-primary" %>
         </div>
 
       </div>
     <% end %>
+
+    <%= link_to "Back to services", services_path, class: "btn btn-primary" %>
   </div>
 </section>
