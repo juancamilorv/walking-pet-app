@@ -22,7 +22,9 @@
                       <ol class="widget-49-meeting-points">
                           <li class="widget-49-meeting-item"><span>Paseador: <%= service.user.name %></span></li>
                           <li class="widget-49-meeting-item"><span>Dueño de la mascota: <%= service.pet.user.name %></span></li>
-                          <li class="widget-49-meeting-item"><span>Mascota: </span></li>
+                          <% if service.state == 'completed' %>
+                            <li class="widget-49-meeting-item"><span>Price: <%= service.price %></span></li>
+                          <% end %>
                       </ol>
                       <div class="widget-49-meeting-action">
 
@@ -43,9 +45,6 @@
                           <%= button_to 'Finalize', service_path(service), method: :patch, params: { state: 'finished' }, class: "btn btn-info"  %>
                         <% end %>
 
-                        <% if service.state == 'completed' %>
-                          <%= service.price %>
-                        <% end %>
 
 
                       </div>
@@ -83,7 +82,34 @@
                         <ol class="widget-49-meeting-points">
                             <li class="widget-49-meeting-item"><span>Paseador: <%= service.user.name %></span></li>
                             <li class="widget-49-meeting-item"><span>Dueño de la mascota: <%= service.pet.user.name %></span></li>
-                            <li class="widget-49-meeting-item"><span>Mascota: </span></li>
+                            <% if service.state == 'completed' %>
+                              <li class="widget-49-meeting-item"><span>Price: <%= service.price %></span></li>
+
+
+                            <div class="form-floating">
+
+                            <%= simple_form_for [@pet, service] do |f| %>
+                              <div class="form-inputs">
+
+                                <%= f.input :rating, label: 'Rating', required: true, class: "form-control" %>
+                                <%= f.input :review, label: 'Review:', required: true %>
+                                <%= f.hidden_field :state, value: "reviewed" %>
+                              </div>
+
+                              <div class="form-actions">
+                                <%= f.button :submit, 'Send', class: "btn btn-primary" %>
+                              </div>
+                            <% end %>
+                            </div>
+
+
+
+
+
+
+
+
+                            <% end %>
                         </ol>
                         <div class="widget-49-meeting-action">
                           <% if service.state == 'denied' %>
@@ -102,21 +128,9 @@
                             <%= button_to 'Finalize', service_path(service), method: :patch, params: { state: 'completed' }, class: "btn btn-info"  %>
                           <% end %>
 
-                          <% if service.state == 'completed' %>
-                            <%= service.price %>
 
-                            <%= simple_form_for [@pet, service] do |f| %>
-                              <div class="form-inputs">
-                                <%= f.input :rating, label: 'Rating', required: true %>
-                                <%= f.input :review, label: 'Review:', required: true %>
-                                <%= f.hidden_field :state, value: "reviewed" %>
-                              </div>
 
-                              <div class="form-actions">
-                                <%= f.button :submit, 'Send', class: "btn btn-primary" %>
-                              </div>
-                            <% end %>
-                          <% end %>
+
                         </div>
                     </div>
                 </div>
