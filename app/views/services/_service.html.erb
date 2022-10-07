@@ -1,7 +1,7 @@
 <% if current_user.petwalker %>
 
     <div class="col">
-      <div class="card">
+      <div class="card" style="width: 18rem;">
         <% if service.pet.photo.attached? %>
           <%= cl_image_tag service.pet.photo.key, class: 'card-img-top' %>
         <% else %>
