@@ -1,30 +1,27 @@
-<!--Dogs Walkers-->
-<div class="card-container col-md">
-  <div class="cards-walkers album py-5 container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3 border-info">
+  <!--Dogs Walkers-->
+  <div class="container">
+    <div class="row justify-content-center">
       <% @petwalkers.each do |petwalker| %>
-        <div class="card-walker border-primary card mx-2 px-3 col">
-          <% if petwalker.photo.attached? %>
-            <%= cl_image_tag petwalker.photo.key, class: 'card-img-top'%>
-          <% else %>
-            <%= image_tag "petwalker.png", size: "auto", style: "border-radius: 5%; width: 100%", class: "card-img-top bd-placeholder-img"%>
-          <% end %>
+        <div class="col-lg-3 mb-3 mx-2 border border-primary">
+          <div class="box">
+              <% if petwalker.photo.attached? %>
+                <%= cl_image_tag petwalker.photo.key, class: 'card-img-top', style: "border-radius: 5%", width: 70 %>
+              <% else %>
+                <!--<i class="fa-solid fa-paw card-img-top"></i>-->
+                  <%= image_tag "petwalker.png", style: "border-radius: 5%", class: "card-img-top"%>
+              <% end %>
 
-          <div class="card-body">
-      <div class="card-user">
-        
-          <%= link_to petwalker.name, user_path(petwalker) %>.
-          <h5 class="card-title"><%= petwalker.region %></h5>
-          <p class="card-description"><%= petwalker.price_per_hour %></p>
-      </div>
+              <h5 class="card-title m-3"></h5>
+              <%= link_to petwalker.email, user_path(petwalker) %>
+              <p class="card-description">Description</p>
+              <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary mb-2' %>
+          </div>
+        </div>
+        <% end %>
     </div>
   </div>
-      <% end %>
 
-
-
-
-<!--Footer-->
-<div class="footer">
-  <p>The walking pet team</p>
-</div>
+  <!--Footer-->
+  <div class="footer text-white bg-primary">
+    <p>The walking pet team</p>
+  </div>

@@ -4,7 +4,7 @@
 
 <div class="row row-cols-3 mx-auto py-2">
   <% @pets.each do |pet| %>
-    <div class="col ">
+    <div class="col">
       <div class="card text-left p-3 pb-md-4 mx-auto" style="width: 18rem;">
         <% if pet.photo.attached? %>
           <%= cl_image_tag pet.photo.key, class: "card-img-top" %>
@@ -18,9 +18,13 @@
           <br>
           <p class="card-text"><%= @pet.important_note %></p>
           <br>
-          <%= button_to 'Delete pet', pet_path(@pet), method: :delete, class: "btn btn-sm btn-warning" %>
-          <%= link_to 'Edit pet', edit_pet_path(@pet), class: 'btn btn-sm btn-info' %>
-          <%= link_to 'New service', new_pet_service_path(@pet), class: 'btn btn-sm btn-danger' %>
+          <div class="row row-cols-1">
+
+          <%= link_to 'Edit pet', edit_pet_path(@pet), class: 'btn btn-sm btn-info col' %>
+          <%= link_to 'New service', new_pet_service_path(@pet), class: 'btn btn-sm btn-danger col' %>
+          </div>
+          <div class="col align-self-end"><%= link_to 'Delete pet', pet_path(@pet), method: :delete, class: "btn btn-sm btn-warning col" %></div>
+
         </div>
       </div>
     </div>
