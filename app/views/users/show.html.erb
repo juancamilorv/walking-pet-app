@@ -1,6 +1,27 @@
-<%= @petwalker.name %><br/>
-<%= @petwalker.email %><br/>
+
+<div class="card">
+<% if @petwalker.photo.attached? %>
+  <%= cl_image_tag @petwalker.photo.key, class: 'card-img-top'%>
+<% else %>
+<div style="width: 18rem;">
+  <%= image_tag "petwalker.png", size: "auto", style: "border-radius: 5%; width: 100%", class: "avatar card-img-top bd-placeholder-img"%>
+</div>
+<% end %>
+
+<div class="card-body">
+
+<%= @petwalker.name %> |
 <%= @petwalker.address %><br/>
+<%= @petwalker.description %><br/>
+<h3 class="card-subtitle">Reviews</h3>
+<% @reviews.each do |review| %>
+  <%= review[:rating] %>|<%= review[:message] %>
+<% end %>
+</div>
+</div>
+
+
+
 
 <%= simple_form_for [@pet, @service] do |f| %>
   <div class="form-inputs">
