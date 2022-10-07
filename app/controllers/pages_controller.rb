@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   before_action :set_petwalkers, only: :home
 
   def home
+    redirect_to services_path if user_signed_in? && current_user.petwalker
   end
 
   private
