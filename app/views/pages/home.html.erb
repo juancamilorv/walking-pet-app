@@ -1,11 +1,11 @@
   <!--Dogs Walkers-->
   <div class="container">
-    <div class="row justify-content-center ">
+    <div class="row justify-content-center">
       <% @petwalkers.each do |petwalker| %>
-        <div class="col-lg-3 mb-3 mx-2 border">
+        <div class="col-lg-3 mb-3 mx-2 border border-primary">
           <div class="box">
               <% if petwalker.photo.attached? %>
-                <%= cl_image_tag petwalker.photo.key, class: 'card-img-top', width: 70 %>
+                <%= cl_image_tag petwalker.photo.key, class: 'card-img-top', style: "border-radius: 5%", width: 70 %>
               <% else %>
                 <!--<i class="fa-solid fa-paw card-img-top"></i>-->
                   <%= image_tag "petwalker.png", style: "border-radius: 5%", class: "card-img-top"%>
