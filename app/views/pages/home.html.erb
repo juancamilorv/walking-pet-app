@@ -12,9 +12,9 @@
               <% end %>
 
               <h5 class="card-title m-3"></h5>
-              <%= link_to petwalker.email, user_path(petwalker) %>
-              <p class="card-description">Description</p>
-              <%= link_to 'RESERVAR', new_pet_path, class: 'btn btn-primary mb-2' %>
+              <%= petwalker.name %>
+              <p class="card-description"><%= "#{petwalker.price_per_hour}/hour" %></p>
+              <%= link_to 'RESERV', user_path(petwalker), class: 'mb-3 btn btn-primary' %>
           </div>
         </div>
         <% end %>
