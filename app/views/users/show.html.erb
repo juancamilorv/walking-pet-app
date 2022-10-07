@@ -1,41 +1,64 @@
+<div class="container emp-profile">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="profile-img">
+        <% if @petwalker.photo.attached? %>
+          <%= cl_image_tag @petwalker.photo.key, class: 'card-img-top'%>
+        <% else %>
+          <%= image_tag "petwalker.png", size: "auto", style: "border-radius: 5%; width: 100%", class: "avatar card-img-top bd-placeholder-img"%>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="profile-head">
+        <h5 class="pb-2"><%= @petwalker.name %></h5>
+        <%= @petwalker.description %>
 
-<div class="card">
-<% if @petwalker.photo.attached? %>
-  <%= cl_image_tag @petwalker.photo.key, class: 'card-img-top'%>
-<% else %>
-<div style="width: 18rem;">
-  <%= image_tag "petwalker.png", size: "auto", style: "border-radius: 5%; width: 100%", class: "avatar card-img-top bd-placeholder-img"%>
+        <ul class="nav nav-tabs">
+          <li class="nav-item mt-5">Reviews</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="profile-work">
+          <p>Social Media</p>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-square-instagram"></i>
+          <<i class="fa-brands fa-twitter"></i>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="tab-content profile-tab">
+          <div class="tab-pane fade show active">
+
+
+
+     <% @reviews.each do |review| %>
+        <%= review[:rating] %>⭐<%= review[:message] %>
+      <% end %>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
-
-<div class="card-body">
-
-<%= @petwalker.name %> |
-<%= @petwalker.address %><br/>
-<%= @petwalker.description %><br/>
-<h3 class="card-subtitle">Reviews</h3>
-<% @reviews.each do |review| %>
-  <%= review[:rating] %>|<%= review[:message] %>
-<% end %>
-</div>
-</div>
-
-
-
 
 <%= simple_form_for [@pet, @service] do |f| %>
   <div class="form-inputs">
-    <%= f.association :user, collection: @petwalkers, selected: 1, label: "Petwalker", label_method: :email %>
+    <%= f.association :user, collection: @petwalkers, selected: 1, label: "Petwalker", label_method: :name %>
     <%= f.input :schedule, label: 'Schedule:', required: true %>
   </div>
 
   <% if user_signed_in? %>
     <div class="form-actions">
-      <%= f.button :submit, 'Schedule', class: "btn btn-sm btn-danger" %>
+      <%= f.button :submit, 'Schedule', class: "mb-5 btn btn-sm btn-danger" %>
     </div>
   <% else %>
     <div class="form-actions">
-      <%= link_to 'Schedule', new_user_session_path, class: 'btn btn-sm btn-danger' %>
+      <%= link_to 'Schedule', new_user_session_path, class: 'mb-5 btn btn-sm btn-danger' %>
     </div>
   <% end %>
 <% end %>
