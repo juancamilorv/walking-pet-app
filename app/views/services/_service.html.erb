@@ -1,7 +1,7 @@
 <% if current_user.petwalker %>
 
     <div class="col">
-      <div class="card">
+      <div class="card" style="width: 18rem;">
         <% if service.pet.photo.attached? %>
           <%= cl_image_tag service.pet.photo.key, class: 'card-img-top' %>
         <% else %>
@@ -17,15 +17,23 @@
 
     </div>
       <% if service.state == 'scheduled' %>
-        <%= button_to 'Accept', service_path(service), method: :patch, class: "btn btn-info"  %>
+        <%= button_to 'Accept', service_path(service), method: :patch, params: { state: 'accepted' }, class: "btn btn-info"  %>
+      <% end %>
+
+      <% if service.state == 'scheduled' %>
+        <%= button_to 'Deny', service_path(service), method: :patch, params: { state: 'denied' }, class: "btn btn-info"  %>
       <% end %>
 
       <% if service.state == 'accepted' %>
-        <%= button_to 'Start', service_path(service), method: :patch, class: "btn btn-info"  %>
+        <%= button_to 'Start', service_path(service), method: :patch, params: { state: 'started' }, class: "btn btn-info"  %>
       <% end %>
 
       <% if service.state == 'in process' %>
-        <%= button_to 'Finalize', service_path(service), method: :patch, class: "btn btn-info"  %>
+        <%= button_to 'Finalize', service_path(service), method: :patch, params: { state: 'finished' }, class: "btn btn-info"  %>
+      <% end %>
+
+      <% if service.state == 'completed' %>
+        <%= service.price %>
       <% end %>
     </div>
 
@@ -47,12 +55,24 @@
     </div>
 
     <div>
+      <% if service.state == 'denied' %>
+        <%= link_to 'Find another pet-walker', edit_service_path(service), class: "btn btn-info"  %>
+      <% end %>
+
+      <% if service.state == 'denied' %>
+        <%= button_to 'Discard service', service_path(service), method: :delete, class: "btn btn-info"  %>
+      <% end %>
+
       <% if service.state == 'started' %>
-        <%= button_to 'Start', service_path(service), method: :patch, class: "btn btn-info"  %>
+        <%= button_to 'Start', service_path(service), method: :patch, params: { state: 'in process' }, class: "btn btn-info"  %>
       <% end %>
 
       <% if service.state == 'finished' %>
-        <%= button_to 'Finalize', service_path(service), method: :patch, class: "btn btn-info"  %>
+        <%= button_to 'Finalize', service_path(service), method: :patch, params: { state: 'completed' }, class: "btn btn-info"  %>
+      <% end %>
+
+      <% if service.state == 'completed' %>
+        <%= service.price %>
       <% end %>
     </div>
 

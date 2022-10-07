@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     unless current_user.petwalker
       pet = Pet.new
       pet.user = current_user
-      pet.name = 'Default pet'
+      pet.name = 'My pet'
       pet.save
     end
   end

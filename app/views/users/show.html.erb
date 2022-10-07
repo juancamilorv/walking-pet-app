@@ -4,7 +4,7 @@
 
 <%= simple_form_for [@pet, @service] do |f| %>
   <div class="form-inputs">
-    <%= f.association :user, collection: [User.find(@petwalker.id)], selected: 1, label: "Petwalker", label_method: :email %>
+    <%= f.association :user, collection: @petwalkers, selected: 1, label: "Petwalker", label_method: :email %>
     <%= f.input :schedule, label: 'Schedule:', required: true %>
   </div>
 
